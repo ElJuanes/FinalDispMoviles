@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public TextMeshProUGUI score;
+    private int puntaje;
     bool inicioJuego = false;
-    void Start()
-    {
-    }
+    bool gana = false;
 
-    // Update is called once per frame
     void Update()
     {
         if (inicioJuego == false)
@@ -24,5 +24,18 @@ public class GameManager : MonoBehaviour
     public void Play()
     {
         inicioJuego = true;
+    }
+    public void Punto()
+    {
+        puntaje++;
+        UpdateScoreText();
+        if (puntaje == 25 && gana == false)
+        {
+            
+        }
+    }
+    private void UpdateScoreText()
+    {
+        score.text = puntaje.ToString();
     }
 }

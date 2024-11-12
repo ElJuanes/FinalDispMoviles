@@ -27,7 +27,7 @@ public class ObjectPool : MonoBehaviour
             {
                 return obj;
             }
-        }
+        }        
         GameObject newObj = Instantiate(prefab);
         newObj.SetActive(false);
         pool.Add(newObj);
