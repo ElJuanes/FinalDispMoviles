@@ -3,14 +3,28 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    public GameObject prefab;
-    public int poolSize = 10;
-    private List<GameObject> pool;
+    public GameObject fallingObjectPrefab;
+    public GameObject speedPrefab;
+    public GameObject growPrefab;
+    public int poolSize = 15;
+    private List<GameObject> fallingObjectsPool;
+    private List<GameObject> speedObjectsPool;
+    private List<GameObject> growObjectsPool;
 
     private void Start()
     {
-        pool = new List<GameObject>();
+        fallingObjectsPool = new List<GameObject>();
+        speedObjectsPool = new List<GameObject>();
+        growObjectsPool = new List<GameObject>();
 
+        // Inicializar los pools con los objetos
+        InitializePool(fallingObjectPrefab, fallingObjectsPool);
+        InitializePool(speedPrefab, speedObjectsPool);
+        InitializePool(growPrefab, growObjectsPool);
+    }
+
+    private void InitializePool(GameObject prefab, List<GameObject> pool)
+    {
         for (int i = 0; i < poolSize; i++)
         {
             GameObject obj = Instantiate(prefab);
@@ -19,7 +33,23 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    public GameObject GetPooledObject()
+    public GameObject GetFallingObject()
+    {
+        return GetPooledObject(fallingObjectsPool);
+    }
+
+    public GameObject GetSpeedObject()
+    {
+        return GetPooledObject(speedObjectsPool);
+    }
+
+    public GameObject GetGrowObject()
+    {
+        return GetPooledObject(growObjectsPool);
+    }
+
+    // Cambiar la firma de este método para que acepte un pool
+    public GameObject GetPooledObject(List<GameObject> pool)
     {
         foreach (GameObject obj in pool)
         {
@@ -27,8 +57,10 @@ public class ObjectPool : MonoBehaviour
             {
                 return obj;
             }
-        }        
-        GameObject newObj = Instantiate(prefab);
+        }
+
+        // Si no hay objetos inactivos, crear uno nuevo
+        GameObject newObj = Instantiate(fallingObjectPrefab); // Usa prefab genérico o uno específico si es necesario
         newObj.SetActive(false);
         pool.Add(newObj);
         return newObj;

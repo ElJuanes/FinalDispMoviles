@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Obstacle
   - zanahoria
+  - Speed
+  - Grow
   layers:
   - Default
   - TransparentFX

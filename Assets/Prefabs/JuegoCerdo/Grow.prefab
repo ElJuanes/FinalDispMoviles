@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: -2877414176998639223}
   - component: {fileID: 908682291977279352}
   m_Layer: 0
-  m_Name: Zanahoria
-  m_TagString: zanahoria
+  m_Name: Grow
+  m_TagString: Grow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8445e5d8f9f12ba4885902205b59e4bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectType: 0
+  objectType: 2
   fallSpeed: 2
 --- !u!70 &908682291977279352
 CapsuleCollider2D:
@@ -110,8 +110,8 @@ Transform:
   m_GameObject: {fileID: 4606571052522071894}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0, z: -2.5467083}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalPosition: {x: 0.0147, y: -0.177, z: -2.5467083}
+  m_LocalScale: {x: 0.20750001, y: 0.2109, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5465407916302977151}
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bdb284cb257424345962835c9dfa7f9d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8a13d2e2e5e465e4aa8f021e0879002a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -391,7 +391,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.8000001, g: 0.32941177, b: 0.0627451, a: 1}
+      maxColor: {r: 0.091625154, g: 0.2268144, b: 0.6698113, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

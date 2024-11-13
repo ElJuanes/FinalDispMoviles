@@ -1,38 +1,56 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
 public class FallingObject : MonoBehaviour
 {
-    private GameManager gameManager;
-    public GameObject zanahoria;
+    public enum ObjectType { Zanahoria, Speed, Grow }
+    public ObjectType objectType;
+    public float fallSpeed = 2f;
+    private AudioSource audioSource;
 
     private void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        audioSource = GetComponent<AudioSource>();
     }
     private void Update()
     {
-        float fallSpeed = gameManager != null ? gameManager.fallSpeed : 2f; 
-        transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
+        transform.Translate(Vector2.down * fallSpeed * Time.deltaTime);
 
-        if (transform.position.y < -Camera.main.orthographicSize)
+        if (transform.position.y < -5f) 
         {
-            restartObj();
             gameObject.SetActive(false);
         }
     }
+    public void UpdateFallSpeed(float newFallSpeed)
+    {
+        fallSpeed = newFallSpeed;
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.CompareTag("Player"))
         {
-            GetComponent<AudioSource>().Play();
-            zanahoria.SetActive(false);
-            GetComponent<Collider2D>().enabled = false;            
+            PlayerMovement player = collision.GetComponent<PlayerMovement>();
+
+            switch (objectType)
+            {
+                case ObjectType.Zanahoria:
+                    //player.gameManager.Punto(); // Otorga el punto al jugador
+                    player.PlayCollectSound();   // Reproduce el sonido
+                    break;
+                case ObjectType.Speed:
+                    player.ApplySpeedEffect();
+                    player.PlayCollectSound();
+                    break;
+                case ObjectType.Grow:
+                    player.ApplyGrowEffect();
+                    player.PlayCollectSound();
+                    break;
+            }
+
+            gameObject.SetActive(false); 
         }
-    }
-    private void restartObj()
-    {
-        zanahoria.SetActive(true);
-        GetComponent<Collider2D>().enabled = true;
     }
 }
