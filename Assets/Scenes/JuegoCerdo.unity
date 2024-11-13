@@ -6005,6 +6005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: {fileID: 1439192953}
+  levelText: {fileID: 932965057}
 --- !u!4 &796701038
 Transform:
   m_ObjectHideFlags: 0

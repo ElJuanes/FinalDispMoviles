@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 2
-  particleEffect: {fileID: 7726869559642779788}
   zanahoria: {fileID: 4606571052522071894}
 --- !u!82 &2893331328147078725
 AudioSource:
